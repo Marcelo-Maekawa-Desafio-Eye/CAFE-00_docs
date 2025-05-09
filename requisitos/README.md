@@ -11,9 +11,12 @@ Este desafio é voltado para desenvolvedores de nível sênior, por isso, espera
 Temos como objetivo avaliar suas habilidades técnicas e raciocínio individual. Por isso, pedimos que não utilize ferramentas de inteligência artificial (como ChatGPT ou similares) na elaboração da solução.
 Queremos entender seu domínio prático e sua forma de pensar — e não o resultado de assistentes automatizados. 
 &nbsp;  
+
  <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
 ___
+
 &nbsp;  
+
 ### 🧾 Cenário
 A empresa Café Ltda está se digitalizando e passará a oferecer a seus clientes um **QR Code** para que realizem seus pedidos diretamente pelo celular. Você foi contratado para desenvolver essa aplicação.
 &nbsp;  
