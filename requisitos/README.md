@@ -12,18 +12,23 @@ Temos como objetivo avaliar suas habilidades técnicas e raciocínio individual.
 Queremos entender seu domínio prático e sua forma de pensar — e não o resultado de assistentes automatizados. 
 &nbsp;  
 
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
 
 &nbsp;  
 
 ### 🧾 Cenário
 A empresa Café Ltda está se digitalizando e passará a oferecer a seus clientes um **QR Code** para que realizem seus pedidos diretamente pelo celular. Você foi contratado para desenvolver essa aplicação.
+
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
-| 🔙 voltar | 🔝 topo |  
+
 ### 🎯 Objetivo
 ##### Criar uma aplicação fullstack onde o cliente possa:
 - Visualizar o cardápio do café
@@ -33,9 +38,13 @@ ___
 - Registrar a transação
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 🧩 Requisitos
 ##### Funcionalidades mínimas:
 
@@ -52,9 +61,13 @@ ___
 - Endpoint para registrar pedido
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 💻 Stack obrigatória
 ##### Você deverá utilizar:
 
@@ -64,9 +77,13 @@ ___
 - Banco de dados: MySQL v8+
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 🧪 Qualidade de código
 - Boas práticas de codificação e componentização
 - Nomenclatura clara e semântica
@@ -76,9 +93,13 @@ ___
 - Documentação da API (Swagger ou Postman Collection)
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 📐System design
 - Elabore um system design que considere robusto e escalável para a solução proposta no mundo real
 - Inclua o desenho da arquitetura ao README 
@@ -86,17 +107,25 @@ ___
 ##### ⚠️Atenção: a codificação deste desafio não deve necessariamente refletir o system design proposto
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 🧠 Modelagem de dados
 - Crie e utilize um modelo relacional no MySQL
 - Inclua diagrama ER e DDL ao README
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 🧰 Diferenciais (opcional)
 ##### Estes itens não são obrigatórios, mas contarão positivamente:
 - TypeScript
@@ -107,17 +136,25 @@ ___
 - Testes unitários e/ou de integração
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 📦 Entregáveis
 - Link do repositório com o código-fonte
 - URL pública com a aplicação funcionando ou instruções para rodar o projeto localmente (README)
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 &nbsp;  
+
 ### 📊 Critérios de avaliação
 - Clareza e organização do código
 - Estrutura da aplicação (backend e frontend)
@@ -127,8 +164,11 @@ ___
 - Documentação do projeto
 
 &nbsp;  
- <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Desafio&nbsp;Técnico&nbsp;-&nbsp;Desenvolvedor&nbsp;Fullstack&nbsp;Sênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+
+ <center><a href="https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_intro" target="_self"><font color="grey" size="2px">🔙 voltar </font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desafiotécnico-desenvolvedorfullstacksênior" target="_self"><font color="grey" size="2px"> 🔝 topo </font></a></center>
+ 
 ___
+
 #### Desejamos sucesso na sua jornada! Se tiver dúvidas, entre em contato com o time de recrutamento.
 #### Estamos ansiosos para ver sua solução 🚀
 &nbsp;   
