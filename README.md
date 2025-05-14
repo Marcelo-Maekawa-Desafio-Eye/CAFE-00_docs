@@ -7,7 +7,7 @@
 Esse teste técnico consiste em uma aplicação fullstack que criará um canal de vendas para uma cafeteria.  
 Esse projeto contém uma série de "Requisitos de Negócio" bem definidos (leia aqui), mas, basicamente, o cliente, após fazer login no sistema, acessa a interface para realizar e personalizar o seu pedido, finalizando-o após o pagamento.  
 
-A minha solução para esse teste será composta por 4 peças-chave: **Frontend**, **BFF**, **API-Produtos** e **API-Pedidos**.  
+A minha solução para esse teste será composta por 4 peças-chave: **Frontend**, **BFF**, **API-Products** e **API-Orders**.  
 Apesar de haver um certo nível de *overengineering* nessa arquitetura, por se tratar de um teste no formato de desafio, acredito que, desse modo, consigo exibir um resultado ao mesmo tempo **tecnicamente complexo**, mas que não pode ser acusado de uso **inadequado de ferramentas**.  
 
 O BFF existe para centralizar a gestão de tokens e gerenciar as chamadas para as diferentes APIs. Além disso, o BFF também será responsável pela **gestão do cache Redis**, realizando operações de **Cache Invalidation** e **Cache Refresh** para garantir que os dados do cardápio estejam sempre atualizados e sincronizados com o banco de dados.  
@@ -126,9 +126,9 @@ A arquitetura adotada para o projeto é híbrida, combinando serviços tradicion
 
 2. **Backend For Frontend (EC2 - NestJS)**: Centraliza a orquestração das chamadas para as APIs e gestão de tokens JWT.
 
-3. **API-Produtos (EC2 - NestJS)**: Serviço contínuo que mantém o cardápio e realiza cache com Redis.
+3. **API-Products (EC2 - NestJS)**: Serviço contínuo que mantém o cardápio e realiza cache com Redis.
 
-4. **API-Pedidos (Lambda - Node.js)**: Função escalável para registro e consulta de pedidos.
+4. **API-Orders (Lambda - Node.js)**: Função escalável para registro e consulta de pedidos.
 
 5. **Banco de Dados (RDS - MySQL)**: Armazenamento centralizado dos dados de produtos, pedidos e usuários.
 
