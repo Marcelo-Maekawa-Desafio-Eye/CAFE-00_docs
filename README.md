@@ -168,7 +168,7 @@ A arquitetura adotada para o projeto é híbrida, combinando serviços tradicion
 
 #### System Design Diagram
 ![System Design Diagram](https://raw.githubusercontent.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs/refs/heads/main/imagens_aux/system_design_diagram.png)
-
+[Visualizar no Lucidcahrt parte 1](https://lucid.app/lucidchart/2c5f1769-1236-4fe2-8d54-05f026137335/edit?viewport_loc=5907%2C-112%2C3518%2C1343%2C0_0&invitationId=inv_1f9050f4-e9a1-4335-a4e5-d6d5b666094c) | [Visualizar no Lucidcahrt parte 2](https://lucid.app/lucidchart/b316f12c-e5b9-4f64-bb3a-0dc395906af7/edit?viewport_loc=-1906%2C1131%2C6131%2C4213%2C0_0&invitationId=inv_bf9ccd54-42d2-488c-b72b-aa272c173915)
 
 ### Definição de Padrões 
 #### Padrão Arquitetural: Microserviços  
@@ -185,7 +185,7 @@ Cada módulo da aplicação é independente, facilitando o desenvolvimento, manu
  #### ERD
  ![ERD](https://raw.githubusercontent.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs/refs/heads/main/imagens_aux/cafe_er_diagram.png)
 
- [Visualizar no Lucidcahrt](https://lucid.app/lucidchart/83dd9643-6966-4f96-9f50-fa8f36951766/edit?viewport_loc=-262%2C44%2C2318%2C1348%2C0_0&invitationId=inv_b39a73b5-31b1-4218-b08e-97439baa18d6)
+ [Visualizar no Lucidcahrt](https://lucid.app/lucidchart/83dd9643-6966-4f96-9f50-fa8f36951766/edit?viewport_loc=-868%2C45%2C3531%2C1348%2C0_0&invitationId=inv_b39a73b5-31b1-4218-b08e-97439baa18d6)
 
  #### DDL
 
