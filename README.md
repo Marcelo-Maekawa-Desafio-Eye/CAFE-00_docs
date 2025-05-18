@@ -1,28 +1,60 @@
 # ![Café Ltda](https://raw.githubusercontent.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs/refs/heads/main/imagens_aux/logo04.png)
 
-###### conteúdo:
 
-## Visão Geral 
+**Conteúdo**
 
-Esse teste técnico consiste em uma aplicação fullstack que criará um canal de vendas para uma cafeteria.  
-Esse projeto contém uma série de "Requisitos de Negócio" bem definidos (leia aqui), mas, basicamente, o cliente, após fazer login no sistema, acessa a interface para realizar e personalizar o seu pedido, finalizando-o após o pagamento.  
+- [Visão Geral](#visão-geral) 
+  - [Arquitetura](#arquitetura) 
+  - [Infraestrutura](#infraestrutura)
+  - [Estrutura de Repositórios](#estrutura-de-repositórios)
+  - [Princípios de Desenvolvimento](#princípios-de-desenvolvimento)  
+  - [Considerações Finais](#considerações-finais)  
+- [Jornada do Usuário](#jornada-do-usuário)  
 
-A minha solução para esse teste será composta por 4 peças-chave: **Frontend**, **BFF**, **API-Products** e **API-Orders**.  
-Apesar de haver um certo nível de *overengineering* nessa arquitetura, por se tratar de um teste no formato de desafio, acredito que, desse modo, consigo exibir um resultado ao mesmo tempo **tecnicamente complexo**, mas que não pode ser acusado de uso **inadequado de ferramentas**.  
 
-O BFF existe para centralizar a gestão de tokens e gerenciar as chamadas para as diferentes APIs. Além disso, o BFF também será responsável pela **gestão do cache Redis**, realizando operações de **Cache Invalidation** e **Cache Refresh** para garantir que os dados do cardápio estejam sempre atualizados e sincronizados com o banco de dados.  
+## Visão Geral
 
-A escolha por uma arquitetura híbrida entre **EC2 e Lambda** se justifica pela necessidade de manter um serviço contínuo para o cardápio (produtos), garantindo **baixa latência e alta disponibilidade**, enquanto o uso de **FaaS para pedidos** permite escalabilidade automática para lidar com picos de demanda.  
+Esse teste técnico consiste em uma aplicação fullstack que criará um canal de vendas para uma cafeteria. Após escanear um QRCode pré-fornecido,o usuário acessa o sistema pra exiber o cardápio, onde ele escolhe seus produtos, quantidades e faz personalizações, e, por fim, faz o pagamento e fechando o pedido.
 
-Para garantir a **consistência histórica**, o preço de cada item é armazenado diretamente na tabela de pedidos no momento da compra. Dessa forma, mesmo que o valor do produto mude posteriormente, os registros antigos permanecem corretos, preservando a integridade financeira dos relatórios.  
+Esse projeto segue a risca, uma série de "Requisitos de Negócio" bem definidos ([leia detalhes aqui](https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs/tree/main/requisitos)). O objetivo da arquitetura proposta é demonstrar a aplicação de conceitos modernos e escaláveis, mesmo que, para um contexto de teste, isso possa parecer *overengineering*. A ideia foi aplicar ferramentas que garantam um sistema robusto e preparado para escalabilidade, mantendo um enfoque profissional e técnico.
 
-A aplicação será configurada com **pipelines CI/CD automatizados** utilizando **GitHub Actions**, garantindo que novas atualizações passem por testes e validações antes do deploy, mantendo a qualidade e a estabilidade do sistema.  
+### Arquitetura
 
-Dessa forma, a arquitetura que proponho para o desafio, busca equilibrar complexidade e eficiência, garantindo um sistema robusto e escalável.
+A solução proposta é composta por 3 componentes principais: **Frontend**, **BFF** e **Core Services**.
+
+- **Frontend**: Interface que exibe o cardápio e permite ao usuário montar seu pedido e finalizar a compra.
+
+- **BFF (Backend for Frontend)**: Centraliza a gestão de autenticação utilizando **JWT básico** e orquestra as chamadas às APIs, além de gerenciar regras de negócio. O BFF acessa o **Redis** para obter informações que mudam com baixa frequência (como dados do cardápio e produtos) e realiza chamadas às **APIs** presentes no **Core Services** para fechamento de pedidos e processamento do carrinho.
+
+- **Core Services**: Um conjunto de FaaS (Functions as a Service) implementadas em **AWS Lambda**. Essas funções estão divididas em dois grupos principais:
+  - **APIs**: Consumidas diretamente pelo BFF para operações de fechamento de pedidos e processamento do carrinho.
+  - **Serviços Agendados**: Atualizam os valores no Redis a partir do **MySQL**, utilizando cron jobs na madrugada para minimizar impacto durante o uso.
+
+### Infraestrutura
+
+O sistema foi desenvolvido com foco em serviços de infraestrutura **gratuitos ou de baixo custo**. A escolha recaiu sobre a **AWS**, utilizando apenas serviços dentro do tier free, como **AWS Lambda** e **AWS RDS (MySQL)**. A gestão de DNS foi realizada pela **Cloudflare**, onde adquiri um domínio a custo reduzido, garantindo um ambiente profissional. A aplicação possui pipelines CI/CD automatizados utilizando **GitHub Actions**, com testes unitários e de integração, assegurando estabilidade e qualidade.
+
+### Estrutura de Repositórios
+
+Para manter a organização e o controle, a solução está estruturada em múltiplos repositórios:
+- [**CAFE-00_docs** - *Documentação*](https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs)
+- [**CAFE-01_frontend** - *Frontend*](https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-01_frontend)
+- [**CAFE-02_bff** - *Backend for Frontend*](https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-02_bff)
+- [**CAFE-03_core-services** - *Core Services*](https://github.com/Marcelo-Maekawa-Desafio-Eye/CAFE-03_core-services)
+
+Essa estrutura facilita o controle de versionamento e manutenção dos componentes, cada um configurado para rodar localmente usando **Docker Compose**.
+
+### Princípios de Desenvolvimento
+
+O projeto foi construído seguindo os princípios **DRY** e **SOLID**, aproveitando a modularidade proporcionada pelas FaaS para garantir responsabilidades bem definidas e facilitar a escalabilidade. O foco na modularização torna o sistema robusto e pronto para expansão, mesmo que seja apenas um teste técnico.
+
+### Considerações Finais
+
+Apesar da arquitetura ser um pouco mais complexa do que o necessário, a idéia foi considerar que o sistema deveria estar preparado para escalar, sem um aumento com o custo da infra, como também demonstrar boas práticas no uso de tecnologias modernas, equilibrando robustez, eficiência e escalabilidade.  A escolha por múltiplos serviços com CI/CD visa garantir um sistema que simula um cenário real de produção, mesmo que em um contexto de teste técnico.
 
 ## Jornada do Usuário
 
-1. Acessa a **Interface** Inicial e **Principal** do sistema;
+##### &nbsp;&nbsp;&nbsp;1. Acessa a **Interface** Inicial e **Principal** do sistema;
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_No topo visualiza a logo e o nome do Usuário_*
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Na área central navega no cardápio_*
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_No bloco à direita visualiza do pedido e finaliza a compra_*
@@ -44,12 +76,12 @@ Dessa forma, a arquitetura que proponho para o desafio, busca equilibrar complex
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Abaixo existe um bt CTA que abre um modal de fechamento_*
 
 5. Preenche os **Dados de Pagamento** 
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_se quiser retornar à edição do pedido, clica no bt cancelar_*
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_seleção de modos de pagamento somente com o cartão de credito como ativo (simplificando)_*
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_preenche formulário com os dados do modo de pagamento_*
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_clica no botão "efetuar pagamento"_*
-
-6. Recebe feedback de **Confirmação**
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Pra retornar na edição do pedido, clica no bt cancelar_*
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Define o modo de pagamento (pra simplificar, permiti somente cartão de crédito)_*
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Preencher o formulário com dados do cartão_*
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Pra finalizar, clicar no botão "efetuar pagamento"_*
+ 
+ 6. Recebe feedback de **Confirmação**
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Aguarda visualizando um loader enquanto a transação é confirmada_*
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Recebe um aviso de Pedido Realizado_*
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; *_Retorna à interface principal e pode assim, começar outro pedido_*
@@ -59,80 +91,80 @@ Dessa forma, a arquitetura que proponho para o desafio, busca equilibrar complex
 
 ### Requisitos Funcionais
 
-1. RF-01 – Inicialização da Sessão via QR Code  
+1. RF-01 - Inicialização da Sessão via QR Code  
 O sistema deve permitir que o usuário inicie a sessão escaneando um QR Code, carregando a Interface Principal personalizada.
 
-2. RF-02 – Exibição da Interface Principal  
+2. RF-02 - Exibição da Interface Principal  
 Na tela principal o sistema deve mostrar:
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;- A logo “Café Ltda.” no topo.
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;- O nome do usuário autenticado.
- <br /> &nbsp;&nbsp;&nbsp;&nbsp;- O cardápio de produtos no centro.
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;- A logo "Café Ltda." no topo.
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;- O nome do usuário.
+ <br /> &nbsp;&nbsp;&nbsp;&nbsp;- O cardápio de produtos na área central.
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;- O resumo do carrinho e botão de finalização à direita.
 
-3. RF-03 – Navegação e Seleção de Produtos  
-Exibir todos os produtos do cardápio em uma lista única com botão “Comprar” visível ao passar o mouse (hover).
+3. RF-03 - Navegação e Seleção de Produtos  
+Exibir todos os produtos do cardápio em uma lista única com botão "Comprar" visível ao passar o mouse (hover).
 
-4. RF-04 – Gestão do Carrinho de Compras  
-Permitir adicionar um produto ao carrinho ao clicar em “Comprar”, e permitir para cada item no carrinho:
+4. RF-04 - Gestão do Carrinho de Compras  
+Permitir adicionar um produto ao carrinho ao clicar em "Comprar", e permitir para cada item no carrinho:
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;- Exibir foto em miniatura, descrição curta e seletor de quantidade (padrão = 1).
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;- Oferecer ícone de lixeira para remoção do item.
  <br /> &nbsp;&nbsp;&nbsp;&nbsp;- Disponibilizar um campo de texto livre para observações do pedido.
 
-5. RF-05 – Cálculo Dinâmico do Valor Total  
+5. RF-05 - Cálculo Dinâmico do Valor Total  
 Recalcular e exibir o valor total sempre que um item for adicionado, removido ou alterada a quantidade.
 
-6. RF-06 – Fluxo de Finalização de Pedido  
-Ao clicar em “Finalizar Pedido”, abrir um modal de confirmação.
-Dentro do modal, oferecer botões “Cancelar” (fecha o modal) e “Prosseguir para Pagamento” (leva ao formulário).
+6. RF-06 - Fluxo de Finalização de Pedido  
+Ao clicar em "Finalizar Pedido", abrir um modal de confirmação.
+Dentro do modal, oferecer botões "Cancelar" (fecha o modal) e "Prosseguir para Pagamento" (leva ao formulário).
 
-7. RF-07 – Processamento de Pagamento com Cartão de Crédito  
+7. RF-07 - Processamento de Pagamento com Cartão de Crédito  
 Exibir formulário de pagamento com campos obrigatórios de cartão de crédito.
 Validar dados do cartão (número, validade, CVV) em tempo real.
 Enviar transação ao gateway e tratar retorno de sucesso ou erro.
 
-8. RF-08 – Feedback de Confirmação  
+8. RF-08 - Feedback de Confirmação  
 Exibir loader enquanto a transação está em processamento.
-Após aprovação, apresentar mensagem “Pedido Realizado” e retornar o usuário à Interface Principal pronta para novo pedido.
+Após aprovação, apresentar mensagem "Pedido Realizado" e retornar o usuário à Interface Principal pronta para novo pedido.
 
 ### Requisitos Não-Funcionais
-1. RNF-01 – Desempenho  
+1. RNF-01 - Desempenho  
 A Interface Principal deve carregar em até 2 segundos em rede móvel 4G.
 A adição/remoção de itens e o recálculo do total devem ocorrer em <500 ms.
 
-2. RNF-02 – Disponibilidade  
+2. RNF-02 - Disponibilidade  
 O sistema deve manter 99,5 % de uptime mensal, com janelas de manutenção programadas fora do horário de pico.
 
-3. RNF-03 – Segurança  
+3. RNF-03 - Segurança  
 Toda comunicação deve usar HTTPS/TLS 1.2+.
 Dados de cartão **não devem** ser armazenados no servidor (tokenização via gateway).
 Seguir práticas de PCI-DSS para integração de pagamento.
 
-4. RNF-04 – Usabilidade e Acessibilidade  
+4. RNF-04 - Usabilidade e Acessibilidade  
 A UI deve ser responsiva para telas de smartphone (320 px a 1920 px).
 Atender WCAG 2.1 nível AA para cores, contrastes e navegação por teclado.
 
-5. RNF-05 – Escalabilidade  
+5. RNF-05 - Escalabilidade  
 A arquitetura deve suportar ao menos 200 pedidos simultâneos sem degradação perceptível.
 Suportar adição horizontal de instâncias de aplicação e filas de processamento de pagamento.
 
-6. RNF-06 – Manutenibilidade  
+6. RNF-06 - Manutenibilidade  
 Código modularizado em front-end e back-end, com cobertura mínima de testes unitários de 80 %.
 Documentação de API e instruções de deploy em repositório público.
 
 ## Arquitetura de Alto Nível
 A arquitetura adotada para o projeto é híbrida, combinando serviços tradicionais hospedados em EC2 com funções serverless em AWS Lambda. Essa escolha permite manter a baixa latência para consultas ao cardápio, enquanto proporciona escalabilidade automática para operações de pedidos.
 
-1. **Frontend (CloudFront - React.js)**: Interface do usuário para visualização do cardápio e realização de pedidos.
+1. **Frontend (Cloudflare + Aws S3 - Vite + React.js)**: Interface do usuário para visualização do cardápio e realização de pedidos.
 
-2. **Backend For Frontend (EC2 - NestJS)**: Centraliza a orquestração das chamadas para as APIs e gestão de tokens JWT.
+2. **Backend For Frontend (Aws EC2 - NestJS)**: Centraliza a orquestração das chamadas para as APIs e gestão de tokens JWT.
 
-3. **API-Products (EC2 - NestJS)**: Serviço contínuo que mantém o cardápio e realiza cache com Redis.
+3. **API-Products (Aws EC2 - NestJS)**: Serviço contínuo que mantém o cardápio e realiza cache com Redis.
 
-4. **API-Orders (Lambda - Node.js)**: Função escalável para registro e consulta de pedidos.
+4. **API-Orders (Aws Lambda - Node.js)**: Função escalável para registro e consulta de pedidos.
 
-5. **Banco de Dados (RDS - MySQL)**: Armazenamento centralizado dos dados de produtos, pedidos e usuários.
+5. **Banco de Dados (Aws RDS - MySQL)**: Armazenamento centralizado dos dados de produtos, pedidos e usuários.
 
-6. **Cache (ElastiCache - Redis)**: Armazenamento temporário para consultas rápidas do cardápio.
+6. **Cache (Aws ElastiCache - Redis)**: Armazenamento temporário para consultas rápidas do cardápio.
 
 #### System Design Diagram
 ![System Design Diagram](https://raw.githubusercontent.com/Marcelo-Maekawa-Desafio-Eye/CAFE-00_docs/refs/heads/main/imagens_aux/system_design_diagram.png)
@@ -164,20 +196,20 @@ USE cafe;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    name VARCHAR(110) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'saler', 'client') DEFAULT 'client',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    name VARCHAR(110) NOT NULL,
     description TEXT,
     price FIXED(10,2) UNSIGNED NOT NULL,
     image_url VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE orders (
@@ -185,7 +217,7 @@ CREATE TABLE orders (
     user_id INT,
     total_price FIXED(10,2) UNSIGNED,
     status ENUM('open', 'finished', 'canceled') DEFAULT 'open',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -207,7 +239,7 @@ CREATE TABLE payments (
     transaction_id VARCHAR(100) DEFAULT NULL,
     gateway_response TEXT,
     status ENUM('open', 'paid', 'fail') DEFAULT 'open',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(id)
 );
 ```
